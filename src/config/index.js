@@ -14,3 +14,7 @@ export const sequelize = new Sequelize({
 // const sequelize = new Sequelize('postgresql://postgres:j58D7htldZM1VQ997q4d@containers-us-west-202.railway.app:6542/railway');
 
 export const secret = process.env.SECRET;
+
+export const domain = `https://${process.env.SUBDOMAIN}.kommo.com`;
+
+export const redrect_uri = 'https://webhooksante.institutodentalsante.com.br';
