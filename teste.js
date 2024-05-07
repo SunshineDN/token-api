@@ -32,21 +32,40 @@
 // console.log(mask);
 // console.log(mask===item);
 
-const data1 = 1715018447000;
-// Data1 convertida para data
-const dateTest = new Date(data1).toTimeString();
-console.log(dateTest);
+// const data1 = 1715018447000;
+// // Data1 convertida para data
+// const dateTest = new Date(data1).toTimeString();
+// console.log(dateTest);
 
-// Data atual em ms
-const data2 = new Date().getTime();
+// // Data atual em ms
+// const data2 = new Date().getTime();
 
-// Verificar se a diferença entre as datas é maior que 23 horas e 59 minutos
-const diffInMilliseconds = Math.abs(data2 - data1);
-const diffInMinutes = Math.floor(diffInMilliseconds / (1000 * 60));
-const diffInHours = Math.floor(diffInMinutes / 60);
+// // Verificar se a diferença entre as datas é maior que 23 horas e 59 minutos
+// const diffInMilliseconds = Math.abs(data2 - data1);
+// const diffInMinutes = Math.floor(diffInMilliseconds / (1000 * 60));
+// const diffInHours = Math.floor(diffInMinutes / 60);
 
-if (diffInHours < 23 && diffInMinutes % 60 < 59) {
-  console.log('A diferença entre as datas é maior ou igual a 23 horas e 59 minutos.');
-} else {
-  console.log('A diferença entre as datas é menor que 23 horas e 59 minutos.');
-}
+// if (diffInHours < 23 && diffInMinutes % 60 < 59) {
+//   console.log('A diferença entre as datas é maior ou igual a 23 horas e 59 minutos.');
+// } else {
+//   console.log('A diferença entre as datas é menor que 23 horas e 59 minutos.');
+// }
+
+// Gerar um token de acesso;
+import jwt from 'jsonwebtoken';
+import { secret } from './src/config/index.js';
+import 'dotenv/config';
+
+// Token infinito
+const token = jwt.sign(process.env.ID, secret);
+console.log(token);
+
+// Verificar se o token é válido
+jwt.verify(token, secret, (err, decoded) => {
+  if (err) {
+    console.log('Token inválido!');
+  } else {
+    console.log(decoded);
+    console.log('Token válido!');
+  }
+});

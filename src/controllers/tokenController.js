@@ -38,12 +38,12 @@ export default class TokenController {
         }
       }
     } catch (e) {
-      console.log('Erro ao pegar token:');
+      console.error('Erro ao pegar token:');
       if (e.response) {
-        console.log(e.response);
+        console.error(e.response);
         res.status(400).json({ message: e.response.data });
       }
-      console.log(e);
+      console.error(e);
       res.status(400).json({ message: e.message });
     }
   }

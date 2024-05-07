@@ -1,7 +1,10 @@
 import express from 'express';
 import TokenController from '../controllers/tokenController.js';
+// import token_middleware from '../middleware/token_middleware.js';
 
 const tokenRouter = express.Router();
+
+// tokenRouter.use(token_middleware);
 
 const tokenController = new TokenController();
 

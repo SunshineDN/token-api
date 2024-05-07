@@ -1,28 +1,24 @@
 import jwo from 'jsonwebtoken';
 import { secret } from '../config/index.js';
 
-export const tokenMiddleware = (req, res, next) => {
-  const req_id = req.body;
-  const token = req.headers['authorization'];
+export default (req, res, next) => {
+  const bearer = req.headers['authorization'];
+  const token = bearer.split(' ')[1];
+  console.log('Verificando token de acesso...');
+  console.log(token);
 
   if (!token) {
-    console.log('Token não informado!');
-    return res.status(401).json({ message: 'Token não informado!' });
+    console.log('Token de acesso não informado!');
+    return res.status(401).json({ message: 'Token de acesso não informado!' });
   } else {
-    jwo.verify(token, secret, (err, decoded) => {
+    jwo.verify(token, secret, (err) => {
       if (err) {
-        console.log('Token inválido!');
-        return res.status(401).json({ message: 'Token inválido!' });
+        console.log('Sem autorização!');
+        return res.status(401).json({ message: 'Sem autorização!' });
       } else {
-        if (decoded.id === req_id.id) {
-          console.log('Token válido!');
-          next();
-        } else {
-          console.log('Token inválido!');
-          return res.status(401).json({ message: 'Token inválido!' });
-        }
+        console.log('Token de acesso válido!');
+        next();
       }
     });
   }
-
 };
