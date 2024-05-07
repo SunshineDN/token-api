@@ -1,7 +1,7 @@
-import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/index.js';
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/index.js');
 
-export default sequelize.define('Token', {
+module.exports = sequelize.define('Token', {
   client_id: {
     type: DataTypes.TEXT,
     primaryKey: true,

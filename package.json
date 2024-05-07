@@ -5,7 +5,6 @@
   "repository": "https://github.com/SunshineDN/token-api",
   "author": "Douglas Augusto",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"

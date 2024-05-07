@@ -1,4 +1,4 @@
-export default (data) => {
+module.exports = (data) => {
   try {
     if (data) {
       console.log('Entrando no dateParse() com parâmetro');

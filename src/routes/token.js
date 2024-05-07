@@ -1,6 +1,7 @@
-import express from 'express';
-import TokenController from '../controllers/tokenController.js';
+const express = require('express');
+const TokenController = require('../controllers/tokenController.js');
 // import token_middleware from '../middleware/token_middleware.js';
+// const token_middleware = require('../middleware/token_middleware.js');
 
 const tokenRouter = express.Router();
 
@@ -14,4 +15,4 @@ tokenRouter.post('/access_token', tokenController.getToken);
 
 tokenRouter.delete('/delete_token', tokenController.deleteToken);
 
-export default tokenRouter;
+module.exports = tokenRouter;

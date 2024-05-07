@@ -1,8 +1,8 @@
-import 'dotenv/config';
-import Sequelize from 'sequelize';
+require('dotenv').config();
+const Sequelize = require('sequelize');
 console.log(`=========================\nWebhook inciado em Node.js na versão: ${process.version}\n=========================\n`);
 
-export const sequelize = new Sequelize({
+const sequelize = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -13,8 +13,10 @@ export const sequelize = new Sequelize({
 
 // const sequelize = new Sequelize('postgresql://postgres:j58D7htldZM1VQ997q4d@containers-us-west-202.railway.app:6542/railway');
 
-export const secret = process.env.SECRET;
+const secret = process.env.SECRET;
 
-export const domain = `https://${process.env.SUBDOMAIN}.kommo.com`;
+const domain = `https://${process.env.SUBDOMAIN}.kommo.com`;
 
-export const redrect_uri = 'https://webhooksante.institutodentalsante.com.br';
+const redrect_uri = 'https://webhooksante.institutodentalsante.com.br';
+
+module.exports = { sequelize, secret, domain, redrect_uri };

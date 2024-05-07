@@ -1,9 +1,9 @@
-import axios from 'axios';
-import Token from '../models/token.js';
-import { domain } from '../config/index.js';
-import dateParse from '../utils/dateParse.js';
+const axios = require('axios');
+const Token = require('../models/token.js');
+const { domain } = require('../config/index.js');
+const dateParse = require('../utils/dateParse.js');
 
-export default class TokenController {
+module.exports = class TokenController {
 
   constructor() {
     this.getToken = this.getToken.bind(this);
@@ -151,4 +151,4 @@ export default class TokenController {
       throw new Error(error);
     }
   }
-}
+};

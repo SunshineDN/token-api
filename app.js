@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import express from 'express';
-import { sequelize } from './src/config/index.js';
-import cors from 'cors';
-import tokenRouter from './src/routes/token.js';
+const express = require('express');
+const { sequelize } = require('./src/config/index.js');
+const cors = require('cors');
+const tokenRouter = require('./src/routes/token.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 

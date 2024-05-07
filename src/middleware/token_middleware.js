@@ -1,7 +1,7 @@
-import jwo from 'jsonwebtoken';
-import { secret } from '../config/index.js';
+const jwt = require('jsonwebtoken');
+const { secret } = require('../config/index.js');
 
-export default (req, res, next) => {
+module.exports = (req, res, next) => {
   const bearer = req.headers['authorization'];
   const token = bearer.split(' ')[1];
   console.log('Verificando token de acesso...');
@@ -11,7 +11,7 @@ export default (req, res, next) => {
     console.log('Token de acesso não informado!');
     return res.status(401).json({ message: 'Token de acesso não informado!' });
   } else {
-    jwo.verify(token, secret, (err) => {
+    jwt.verify(token, secret, (err) => {
       if (err) {
         console.log('Sem autorização!');
         return res.status(401).json({ message: 'Sem autorização!' });
