@@ -13,10 +13,4 @@ const sequelize = new Sequelize({
 
 // const sequelize = new Sequelize('postgresql://postgres:j58D7htldZM1VQ997q4d@containers-us-west-202.railway.app:6542/railway');
 
-const secret = process.env.SECRET;
-
-const domain = `https://${process.env.SUBDOMAIN}.kommo.com`;
-
-const redrect_uri = 'https://webhooksante.institutodentalsante.com.br';
-
-module.exports = { sequelize, secret, domain, redrect_uri };
+module.exports = sequelize;

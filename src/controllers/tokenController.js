@@ -1,9 +1,8 @@
 const axios = require('axios');
 const Token = require('../models/token.js');
-const { domain } = require('../config/index.js');
+const { domain } = require('../config/database.js');
 const dateParse = require('../utils/dateParse.js');
-
-module.exports = class TokenController {
+ class TokenController {
 
   constructor() {
     this.getToken = this.getToken.bind(this);
@@ -152,3 +151,5 @@ module.exports = class TokenController {
     }
   }
 };
+
+module.exports = new TokenController();

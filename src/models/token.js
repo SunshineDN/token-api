@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/index.js');
+const { sequelize } = require('../config/database.js');
 
 module.exports = sequelize.define('Token', {
   client_id: {

@@ -7,12 +7,12 @@ const tokenRouter = express.Router();
 
 // tokenRouter.use(token_middleware);
 
-const tokenController = new TokenController();
+tokenRouter.use(express.json());
 
-tokenRouter.delete('/drop_table', tokenController.dropTable);
+tokenRouter.delete('/drop_table', TokenController.dropTable);
 
-tokenRouter.post('/access_token', tokenController.getToken);
+tokenRouter.post('/access_token', TokenController.getToken);
 
-tokenRouter.delete('/delete_token', tokenController.deleteToken);
+tokenRouter.delete('/delete_token', TokenController.deleteToken);
 
 module.exports = tokenRouter;
