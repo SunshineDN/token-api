@@ -3,13 +3,11 @@ const express = require('express');
 const sequelize = require('./src/config/database.js');
 const cors = require('cors');
 const tokenRouter = require('./src/routes/token.js');
-const testeRouter = require('./src/routes/teste.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use('/auth', tokenRouter);
-app.use('/teste', testeRouter);
 
 app.use((req, res, next) => {
   console.log('Endpoint não encontrado!\n');
