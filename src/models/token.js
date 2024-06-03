@@ -1,14 +1,22 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database.js');
+const sequelize = require('../config/database.js');
 
 module.exports = sequelize.define('Token', {
-  client_id: {
-    type: DataTypes.TEXT,
+  account_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
     primaryKey: true,
+  },
+  subdomain: {
+    type: DataTypes.STRING(50),
+    allowNull: false
+  },
+  client_id: {
+    type: DataTypes.STRING(50),
     allowNull: false
   },
   client_secret: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING(80),
     allowNull: false
   },
   access_token: {
@@ -18,19 +26,7 @@ module.exports = sequelize.define('Token', {
   refresh_token: {
     type: DataTypes.TEXT,
     allowNull: false
-  },
-  token_type: {
-    type: DataTypes.STRING(20),
-    allowNull: false,
-  },
-  redirect_uri: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  expires_in: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
+  }
 }, {
   tableName: 'tokens',
 });

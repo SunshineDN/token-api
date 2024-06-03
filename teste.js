@@ -52,20 +52,31 @@
 // }
 
 // Gerar um token de acesso;
-import jwt from 'jsonwebtoken';
-import { secret } from './src/config/index.js';
-import 'dotenv/config';
+// import jwt from 'jsonwebtoken';
+// import { secret } from './src/config/index.js';
+// import 'dotenv/config';
 
-// Token infinito
-const token = jwt.sign(process.env.ID, secret);
-console.log(token);
+// // Token infinito
+// const token = jwt.sign(process.env.ID, secret);
+// console.log(token);
 
-// Verificar se o token é válido
-jwt.verify(token, secret, (err, decoded) => {
-  if (err) {
-    console.log('Token inválido!');
-  } else {
-    console.log(decoded);
-    console.log('Token válido!');
+// // Verificar se o token é válido
+// jwt.verify(token, secret, (err, decoded) => {
+//   if (err) {
+//     console.log('Token inválido!');
+//   } else {
+//     console.log(decoded);
+//     console.log('Token válido!');
+//   }
+// });
+
+const req = {
+  headers: {
+    host: 'api.aiatende.com.br',
   }
-});
+}
+
+let { host } = req.headers;
+host = `https://${host}`;
+
+console.log(host);

@@ -1,6 +1,6 @@
 class TesteController {
   async index(req, res) {
-    res.json(req.body);
+    res.json(req.headers);
   }
 }
 
