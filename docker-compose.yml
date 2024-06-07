@@ -6,9 +6,27 @@ services:
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: token_api
     ports:
-      - "5432:5432"
+      - "5432:5431"
     volumes:
       - ./data:/var/lib/postgresql/data
+
+  backend:
+      depends_on:
+        - db
+      build: .
+      command: "npm run start"
+      working_dir: /home/node/app
+      environment:
+        - NODE_ENV=production
+        - DB_USER=docker
+        - DB_PASSWORD=docker
+        - DB_HOST=localhost
+        - DB_NAME=token_api
+        - DB_URL=postgres://docker:docker@db:5432/token_api
+      expose:
+        - "3001"
+      ports:
+        - "3001:3001"
 
 volumes:
   data:

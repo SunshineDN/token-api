@@ -29,13 +29,13 @@ class TokenController {
   }
 
   async getToken(req, res) {
-    let { host } = req.headers;
-    host = `https://${host}`;
-    // const host = "https://api.aiatende.com.br"
-
+    // console.log('Headers da requisição: ');
+    // console.log(req.headers);
+    // let { host } = req.headers;
+    // host = `https://${host}`;
     const body = req.body;
     const { account_id } = body;
-    body.host = host;
+    body.host = "http://aiatende.com:3000";
     console.log('Pegando token...');
     console.log('Body da requisição: ');
     console.log(body);
@@ -46,7 +46,7 @@ class TokenController {
       const token = await Token.findOne({ where: { account_id } });
       if (token) {
         console.log('Token encontrado!');
-        const { access_token } = await this.verifyToken(token.account_id, host);
+        const { access_token } = await this.verifyToken(token.account_id, body.host);
         res.status(200).json({ message: 'Token existe!', access_token });
       } else {
         if (!body.client_secret || !body.client_id || !body.grant_type || !body.client_code || !body.subdomain) {
