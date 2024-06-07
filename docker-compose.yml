@@ -17,6 +17,8 @@ services:
       - "3001"
     ports:
       - "3001:3001"
+    networks:
+      - ai-atende-network
 
   database-token:
     image: postgres:latest
@@ -28,6 +30,12 @@ services:
       - "5431:5432"
     volumes:
       - ./data-token-api:/var/lib/postgresql/data
+    networks:
+      - ai-atende-network
 
 volumes:
   data-token-api:
+
+networks:
+  ai-atende-network:
+    external: true
